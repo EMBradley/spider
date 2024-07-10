@@ -1,13 +1,16 @@
 {
   "name": "spider",
-  "module": "index.ts",
+  "module": "main.ts",
+  "type": "module",
+  "scripts": {
+    "spider": "bun run main.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "type": "module",
   "dependencies": {
     "jsdom": "^24.1.0"
   }
