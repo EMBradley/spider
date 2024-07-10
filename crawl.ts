@@ -20,14 +20,17 @@ async function crawlPage(
   }
 
   pages.set(normalized, 1);
-  const htmlBody = await fetchHtmlBody(currentUrl);
-  const urls = extractUrl(htmlBody, baseUrl);
 
-  for (const url of urls) {
-    pages = await crawlPage(url, baseUrl, pages);
+  try {
+    const htmlBody = await fetchHtmlBody(currentUrl);
+    const urls = extractUrl(htmlBody, baseUrl);
+
+    for (const url of urls) {
+      pages = await crawlPage(url, baseUrl, pages);
+    }
+  } finally {
+    return pages;
   }
-
-  return pages;
 }
 
 async function fetchHtmlBody(url: URL): Promise<string> {
