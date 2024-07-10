@@ -1,4 +1,4 @@
-import { crawlPage } from "./crawl";
+import { printReport } from "./report";
 
 async function main() {
   const args = Bun.argv;
@@ -10,14 +10,10 @@ async function main() {
   }
 
   const baseUrl = args[2];
-  console.log(`spider now crawling over ${baseUrl}\n`);
 
   try {
     let url = new URL(baseUrl);
-    let pages = await crawlPage(url, url, new Map());
-    for (const [page, count] of pages.entries()) {
-      console.log(`${page}: ${count}`);
-    }
+    await printReport(url);
   } catch (error) {
     if (error instanceof Error) {
       console.log(error.message);
