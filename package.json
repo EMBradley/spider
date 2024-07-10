@@ -1,9 +1,9 @@
 {
   "name": "spider",
-  "module": "main.ts",
+  "module": "src/main.ts",
   "type": "module",
   "scripts": {
-    "spider": "bun run main.ts"
+    "spider": "bun run src/main.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
