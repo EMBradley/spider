@@ -1,7 +1,6 @@
 import { JSDOM } from "jsdom";
-export { normalizeUrl, extractUrl, crawlPage };
 
-async function crawlPage(
+export async function crawlPage(
   currentUrl: URL,
   baseUrl: URL,
   pages: Map<string, number>,
@@ -60,7 +59,7 @@ async function fetchHtmlBody(url: URL): Promise<string> {
   return body;
 }
 
-function normalizeUrl(url: URL): string {
+export function normalizeUrl(url: URL): string {
   let path = `${url.host}${url.pathname}`;
 
   if (path.endsWith("/")) {
@@ -70,7 +69,7 @@ function normalizeUrl(url: URL): string {
   }
 }
 
-function extractUrl(html: string, baseUrl: URL): URL[] {
+export function extractUrl(html: string, baseUrl: URL): URL[] {
   const dom = new JSDOM(html);
   const anchors = dom.window.document.querySelectorAll("a");
   const urls = [];

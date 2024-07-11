@@ -1,8 +1,6 @@
 import { crawlPage } from "./crawl";
 
-export { printReport };
-
-async function printReport(url: URL) {
+export async function printReport(url: URL) {
   console.log(`Spider now crawling over ${url}\n`);
 
   const pages = await crawlPage(url, url, new Map());
