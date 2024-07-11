@@ -1,24 +1,20 @@
 import { test, expect } from "bun:test";
 import { normalizeUrl, extractUrl } from "./crawl";
 
-// test normalizeUrl
-const equivalentUrls = [
-  "https://blog.boot.dev/path/",
-  "https://blog.boot.dev/path",
-  "http://blog.boot.dev/path/",
-  "http://blog.boot.dev/path",
-];
+test(`normalize urls`, () => {
+  const equivalentUrls = [
+    "https://blog.boot.dev/path/",
+    "https://blog.boot.dev/path",
+    "http://blog.boot.dev/path/",
+    "http://blog.boot.dev/path",
+  ];
 
-const expected = "blog.boot.dev/path";
-
-for (const url of equivalentUrls) {
-  test(`normalize ${url}`, () => {
+  const expected = "blog.boot.dev/path";
+  for (const url of equivalentUrls) {
     const actual = normalizeUrl(new URL(url));
     expect(actual).toEqual(expected);
-  });
-}
-
-// test extractUrl
+  }
+});
 
 test("extract absolute url", () => {
   const html =
